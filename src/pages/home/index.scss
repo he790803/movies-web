@@ -1,0 +1,109 @@
+@use '../../scss/index' as *;
+.poster {
+  .posterImage {
+    position: relative;
+    // 取消雙擊反白
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    max-height: calc(100vh - 100px);
+    @media screen and (max-width: 1540px) {
+      min-height: calc(100vh - 100px);
+    }
+    img {
+      width: 100%;
+      max-height: calc(100vh - 100px);
+      vertical-align: bottom;
+      @media screen and (max-width: 1540px) {
+        min-height: calc(100vh - 100px);
+      }
+    }
+  }
+  .carousel-button.prev,
+  .carousel-button.next {
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+    height: 100%;
+    top: 0%;
+    &:hover {
+      background-color: rgba($color: #000000, $alpha: 0.5);
+    }
+  }
+  .carousel-button.prev {
+    left: 0;
+  }
+  .carousel-button.next {
+    right: 0;
+  }
+  .posterImage_overlay {
+    position: absolute;
+    padding: 5rem;
+    bottom: 0px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 1));
+    opacity: 0;
+    transition: opacity 0.3s;
+    @include table {
+      opacity: 1;
+    }
+    &:hover {
+      opacity: 1;
+    }
+    .posterImage_description {
+      max-height: 400px;
+      // width: 90vw;
+      .description {
+        // 行數限制
+        overflow: hidden;
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3; /*行數*/
+        -webkit-box-orient: vertical;
+        white-space: normal;
+      }
+    }
+    .posterImage__title {
+      font-weight: 900;
+      font-size: 5rem;
+      margin-bottom: 0.4rem;
+      text-align: left;
+    }
+
+    .posterImage_runtime {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      @media screen and (max-width: 760px) {
+        @include flex(flex-start, unset);
+        flex-direction: column;
+      }
+    }
+
+    .posterImage_rating {
+      margin-left: 3rem;
+      display: inline-flex;
+      align-items: center;
+      @media screen and (max-width: 760px) {
+        margin-left: 0;
+      }
+    }
+
+    .posterImage_description {
+      font-style: italic;
+      font-size: 2rem;
+      margin-bottom: 0.25rem;
+      display: flex;
+      text-align: left;
+      width: 50%;
+      @media screen and (max-width: 760px) {
+        width: 100%;
+      }
+    }
+  }
+}

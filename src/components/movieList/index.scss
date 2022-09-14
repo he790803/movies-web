@@ -1,0 +1,26 @@
+@use '../../scss/index' as *;
+
+.movie_list {
+  padding: 0 3rem 3rem 3rem;
+  // width: 1280px;
+  // margin: auto;
+}
+
+.list_title {
+  font-size: 1.75rem;
+  margin: 2.5rem 0;
+}
+
+.list_cards {
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: flex-start;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(auto-fill, 200px);
+  grid-gap: 10px;
+  @include mobile {
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 300px);
+  }
+}

@@ -1,0 +1,46 @@
+@use '../../scss/index' as *;
+
+.header {
+  height: 100px;
+  margin: 0 2.5rem;
+  padding: 0.5rem 0;
+  @include flex(space-between, center);
+  .headerLeft,
+  .headerRight {
+    @include flex(space-between, center);
+    .header_icon {
+      width: 80px;
+      cursor: pointer;
+    }
+  }
+}
+a {
+  @include flex(center, center);
+}
+a > span {
+  margin: 0 30px;
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  &:hover {
+    color: #f3ce13;
+  }
+  @media screen and (max-width: 760px) {
+    display: none;
+  }
+}
+
+// .header_logo {
+//   width: 240px;
+//   font-weight: 600;
+//   color: #000;
+//   font-size: 3rem;
+//   display: inline-block;
+//   cursor: pointer;
+//   background-color: #fff;
+// }
+
+.user_avatar {
+  font-size: 2rem;
+}

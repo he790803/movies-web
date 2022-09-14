@@ -1,0 +1,15 @@
+// RWD中斷點
+// 載入變數
+@use './variable' as *;
+
+@mixin mobile {
+  @media screen and (max-width: $mobile-width) {
+    @content;
+  }
+}
+
+@mixin table {
+  @media screen and (max-width: $table-width) {
+    @content;
+  }
+}
