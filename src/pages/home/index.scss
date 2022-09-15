@@ -53,11 +53,53 @@
     @include table {
       opacity: 1;
     }
+    @media screen and (max-width: 760px) {
+      align-items: center;
+    }
     &:hover {
       opacity: 1;
     }
+
+    .posterImage_title {
+      font-weight: 900;
+      font-size: 5rem;
+      margin-bottom: 0.4rem;
+
+      @media screen and (max-width: 760px) {
+        font-size: 3rem;
+      }
+    }
+
+    .posterImage_runtime {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      @media screen and (max-width: 760px) {
+        // @include flex(flex-start, unset);
+        // flex-direction: column;
+        display: none;
+      }
+      .posterImage_rating {
+        margin-left: 3rem;
+        display: inline-flex;
+        align-items: center;
+        @media screen and (max-width: 760px) {
+          margin-left: 0;
+        }
+      }
+    }
+
     .posterImage_description {
       max-height: 400px;
+      font-style: italic;
+      font-size: 2rem;
+      margin-bottom: 0.25rem;
+      display: flex;
+      text-align: left;
+      width: 50%;
+      @media screen and (max-width: 760px) {
+        // width: 100%;
+        display: none;
+      }
       // width: 90vw;
       .description {
         // 行數限制
@@ -67,42 +109,6 @@
         -webkit-line-clamp: 3; /*行數*/
         -webkit-box-orient: vertical;
         white-space: normal;
-      }
-    }
-    .posterImage__title {
-      font-weight: 900;
-      font-size: 5rem;
-      margin-bottom: 0.4rem;
-      text-align: left;
-    }
-
-    .posterImage_runtime {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      @media screen and (max-width: 760px) {
-        @include flex(flex-start, unset);
-        flex-direction: column;
-      }
-    }
-
-    .posterImage_rating {
-      margin-left: 3rem;
-      display: inline-flex;
-      align-items: center;
-      @media screen and (max-width: 760px) {
-        margin-left: 0;
-      }
-    }
-
-    .posterImage_description {
-      font-style: italic;
-      font-size: 2rem;
-      margin-bottom: 0.25rem;
-      display: flex;
-      text-align: left;
-      width: 50%;
-      @media screen and (max-width: 760px) {
-        width: 100%;
       }
     }
   }

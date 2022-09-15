@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AiFillStar } from 'react-icons/ai';
+import { BsFillPlayFill } from 'react-icons/bs';
 
 import './index.scss';
+import RWD_Listener from '../../components/rwdListener/RWD_Listener';
 
 export default function MovieDetail() {
   const [currentMovieDetail, setMovieDetail] = useState();
   const { id } = useParams();
+  let device = RWD_Listener();
 
   useEffect(() => {
     getData();
@@ -32,6 +35,21 @@ export default function MovieDetail() {
           className="movie__backdrop"
           src={`https://image.tmdb.org/t/p/original${currentMovieDetail ? currentMovieDetail.backdrop_path : ''}`}
         />
+        {currentMovieDetail && currentMovieDetail.imdb_id && (
+          <a
+            rel="noreferrer noopener"
+            href={'https://www.imdb.com/title/' + currentMovieDetail.imdb_id}
+            target="_blank"
+            style={{ textDecoration: 'none' }}
+          >
+            {/* <p>
+              <span className="movie__imdbButton movie__Button">
+                IMDb<i className="newTab fas fa-external-link-alt"></i>
+              </span>
+            </p> */}
+            <BsFillPlayFill className={`play_btn ${device === 'small' ? 'hidden' : ''}`} />
+          </a>
+        )}
       </div>
       <div className="movie__detail">
         <div className="movie__detailLeft">
@@ -41,6 +59,21 @@ export default function MovieDetail() {
               className="movie__poster"
               src={`https://image.tmdb.org/t/p/original${currentMovieDetail ? currentMovieDetail.poster_path : ''}`}
             />
+            {currentMovieDetail && currentMovieDetail.imdb_id && (
+              <a
+                rel="noreferrer noopener"
+                href={'https://www.imdb.com/title/' + currentMovieDetail.imdb_id}
+                target="_blank"
+                style={{ textDecoration: 'none' }}
+              >
+                {/* <p>
+              <span className="movie__imdbButton movie__Button">
+                IMDb<i className="newTab fas fa-external-link-alt"></i>
+              </span>
+            </p> */}
+                <BsFillPlayFill className={`play__mobile_btn ${device !== 'small' ? 'hidden' : ''}`} />
+              </a>
+            )}
           </div>
         </div>
         <div className="movie__detailRight">
@@ -75,17 +108,8 @@ export default function MovieDetail() {
           </div>
         </div>
       </div>
-      <div className="movie__links">
+      {/* <div className="movie__links">
         <div className="movie__heading">外部連結</div>
-        {currentMovieDetail && currentMovieDetail.homepage && (
-          <a href={currentMovieDetail.homepage} target="_blank" style={{ textDecoration: 'none' }}>
-            <p>
-              <span className="movie__homeButton movie__Button">
-                Homepage <i className="newTab fas fa-external-link-alt"></i>
-              </span>
-            </p>
-          </a>
-        )}
         {currentMovieDetail && currentMovieDetail.imdb_id && (
           <a
             href={'https://www.imdb.com/title/' + currentMovieDetail.imdb_id}
@@ -99,26 +123,6 @@ export default function MovieDetail() {
             </p>
           </a>
         )}
-      </div>
-      {/* <div className="movie__heading">Production companies</div>
-      <div className="movie__production">
-        {currentMovieDetail &&
-          currentMovieDetail.production_companies &&
-          currentMovieDetail.production_companies.map((company) => (
-            <div key={company.id}>
-              {company.logo_path && (
-                <div className="productionCompanyImage">
-                  <div className="movie__productionCompany">
-                    <img
-                      alt="movie__productionCompany"
-                      src={'https://image.tmdb.org/t/p/original' + company.logo_path}
-                    />
-                  </div>
-                  <span>{company.name}</span>
-                </div>
-              )}
-            </div>
-          ))}
       </div> */}
     </div>
   );

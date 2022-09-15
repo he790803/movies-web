@@ -93,7 +93,7 @@ export default function MovieList() {
 
   return (
     <div className="movie_list">
-      <h2 className="list_title">{(type ? type : 'POPULAR').toUpperCase()}</h2>
+      {/* <h2 className="list_title">{(type ? type : 'POPULAR').toUpperCase()}</h2> */}
       <div className="list_cards">
         {movieList.map((movie) => (
           <Cards movie={movie} key={movie.id} />

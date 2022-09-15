@@ -4,6 +4,7 @@
   flex-direction: column;
   .movie__intro {
     width: 75%;
+    position: relative;
     @include table {
       width: 90%;
     }
@@ -18,8 +19,42 @@
       }
     }
   }
+  .movie__posterBox {
+    position: relative;
+  }
+  .play_btn,
+  .play__mobile_btn {
+    position: absolute;
+    z-index: 100;
+    color: #eee;
+    border-radius: 50%;
+    &:hover {
+      background-color: #f3ce13;
+    }
+  }
+  .play_btn {
+    bottom: 100px;
+    right: 50px;
+    width: 70px;
+    height: 70px;
+    background-color: #f3ce1377;
+    transition: background-color 0.3s ease-in;
+  }
+  .play_btn.hidden,
+  .play__mobile_btn.hidden {
+    display: none;
+  }
+  .play__mobile_btn {
+    bottom: 50px;
+    right: 25px;
+    width: 40px;
+    height: 40px;
+    background-color: #f3ce13;
+  }
+
   .movie__detail {
-    background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 1));
+    // background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 1));
+    height: 0;
     width: 80%;
     @include flex(flex-start, flex-start);
     position: relative;
